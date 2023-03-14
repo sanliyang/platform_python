@@ -7,14 +7,15 @@
 @create->time 2023/3/8-16:02
 @desc->
 ++++++++++++++++++++++++++++++++++++++ """
-import json
 import logging.handlers
 import inspect
-import os
 import traceback
 
 from kafka import KafkaProducer
 from kafka.errors import kafka_errors
+
+from base.c_json import CJson
+from c_file import CFile
 
 
 class CLogger:
@@ -30,10 +31,11 @@ class CLogger:
         self.logger = logging.getLogger("loganysystem")
         self.handler_console = logging.StreamHandler()
         self.handler_file = logging.FileHandler(filename="test.log")
+        cj_obj = CJson()
         self.producer = KafkaProducer(
             bootstrap_servers=['192.168.44.129:9092'],
-            key_serializer=lambda k: json.dumps(k).encode(),
-            value_serializer=lambda v: json.dumps(v).encode()
+            key_serializer=lambda k: cj_obj.dict_2_json(k).encode(),
+            value_serializer=lambda v: cj_obj.dict_2_json(v).encode()
         )
 
     def __set_level(self):
@@ -64,7 +66,7 @@ class CLogger:
             'file_name': file_name,
             'file_no': file_no,
             'msg': msg,
-            'type': os.path.basename(os.path.dirname(file_name))
+            'type': CFile.get_file_main_name(CFile.path_dir_path(file_name))
         }
         if self.switch_kafka:
             future = self.producer.send('test', key=level, value=kafka_msg, partition=0)
@@ -85,7 +87,7 @@ class CLogger:
         elif level == 'warning':
             self.logger.warning(msg, *args, **kwargs)
         elif level == 'error':
-            self.logger.error(msg,*args, **kwargs)
+            self.logger.error(msg, *args, **kwargs)
         elif level == 'critical':
             self.logger.critical(msg, *args, **kwargs)
         self.handler_console.close()

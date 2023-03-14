@@ -15,6 +15,9 @@ class CJson:
     def __init__(self):
         self.json_obj = None
 
+    def dict_2_json(self, mydict):
+        return json.dumps(mydict)
+
     def load(self, mark: any):
         if type(mark) == dict:
             json_str = json.dumps(mark)
