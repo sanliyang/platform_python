@@ -9,13 +9,15 @@ import orjson
 import jmespath
 
 from base.c_file import CFile
+from base.c_resource import CResource
 
 
 class CJson:
     def __init__(self):
         self.json_obj = None
 
-    def dict_2_json(self, mydict):
+    @classmethod
+    def dict_2_json(cls, mydict):
         return json.dumps(mydict)
 
     def load(self, mark: any):
@@ -42,7 +44,7 @@ class CJson:
         if type(value) == str:
             return value
         if type(value) == list:
-            return value[0]
+            return value[CResource.CONSTENT_ZERO]
 
 
 if __name__ == '__main__':

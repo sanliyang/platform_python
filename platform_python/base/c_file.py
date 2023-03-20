@@ -6,6 +6,7 @@
 import os
 import shutil
 import pathlib
+from base.c_resource import CResource
 
 
 class CFile:
@@ -39,12 +40,16 @@ class CFile:
         return pathlib.Path(path).is_dir()
 
     @classmethod
-    def get_file_size(cls, path):
+    def check_work_dir(cls, work_dir):
+        os.chdir(work_dir)
+
+    @classmethod
+    def get_file_size(cls, path, unit=CResource.MEMORY_KB):
         size_byte = os.path.getsize(path)
-        if int(size_byte) < int(1024 * 1024):
-            return size_byte / float(1024), 'KB'
-        else:
-            return size_byte / float(1024 * 1024), 'MB'
+        if unit == CResource.MEMORY_KB:
+            return size_byte / float(CResource.AWESOME), CResource.MEMORY_KB
+        elif unit == CResource.MEMORY_MB:
+            return size_byte / float(CResource.AWESOME * CResource.AWESOME), CResource.MEMORY_MB
 
     @classmethod
     def get_file_add_time(cls, file_name_with_path):
@@ -172,9 +177,19 @@ class CFile:
 
 
 if __name__ == '__main__':
-    dir_path = CFile.path_dir_path("./c_file.py")
-    print(dir_path)
-    print(CFile.get_work_dir_current_file())
-    print(CFile.get_project_root_path())
+    # dir_path = CFile.path_dir_path("./c_file.py")
+    # print(dir_path)
+    # print(CFile.get_work_dir_current_file())
+    # print(CFile.get_project_root_path())
+    #
+    # print(CFile.find_file_from_path("d:/platform_python", "*.py", True))
 
-    print(CFile.find_file_from_path("d:/platform_python", "*.py", True))
+    # file_size, size_unit = CFile.get_file_size(r"D:\gdbgdb\530402红塔区.gdb\a00000029.gdbtable", "KB")
+    # print(file_size, size_unit)
+    file_list = CFile.find_file_from_path(r"D:\测试", "*", True)
+    root_list = [r"D:\测试"] * len(file_list)
+    print(file_list)
+    results = map(CFile.get_relative_path, file_list, root_list)
+    print(results)
+    for result in results:
+        print(result)

@@ -160,6 +160,10 @@ class CTime:
         """
         return datetime.datetime.now()
 
+    @classmethod
+    def sleep(cls, second):
+        time.sleep(second)
+
 
 if __name__ == '__main__':
     print(CTime.get_now_timestamp())
