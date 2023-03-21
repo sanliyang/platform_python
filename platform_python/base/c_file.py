@@ -78,6 +78,13 @@ class CFile:
         file_obj.replace(new_file)
 
     @classmethod
+    def add_suffix(cls, path, add_suffix):
+        if add_suffix.startswith("."):
+            return f"{path}{add_suffix}"
+        else:
+            return f"{path}.{add_suffix}"
+
+    @classmethod
     def unlink(cls, path):
         pathlib.Path(path).unlink()
 

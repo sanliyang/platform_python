@@ -19,6 +19,10 @@ class NodeBase(CResource, metaclass=abc.ABCMeta):
         self.input_list = None
         self.output_list = []
         self.params = None
+        self.node_id = None
+
+    def get_node_id(self):
+        self.node_id = CUtils.one_id()
 
     @abc.abstractmethod
     def help(self):
@@ -51,17 +55,20 @@ class NodeBase(CResource, metaclass=abc.ABCMeta):
         )
 
     def run(self):
-        return CResult.merge_result(
-            self.RESULT_SUCCESS,
-            "this is a _run test"
-        )
+        result_check_input = self.check_input()
+        result_check_params = self.check_params()
+        result = CResult.result_xor(result_check_input, result_check_params)
+        return result
 
     def get_config(self, node_config):
         self.input_list = CUtils.get_input(node_config)
         self.params = CUtils.get_params(node_config)
 
     def update_output(self, output_obj):
-        self.output_list.append(output_obj)
+        if type(output_obj) == str:
+            self.output_list.append(output_obj)
+        if type(output_obj) == list:
+            self.output_list = output_obj
 
     def save_ouput(self):
         ...

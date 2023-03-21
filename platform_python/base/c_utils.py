@@ -7,6 +7,7 @@
 @create->time 2023/3/20-14:40
 @desc->
 ++++++++++++++++++++++++++++++++++++++ """
+import uuid
 from base.c_json import CJson
 from base.c_resource import CResource
 
@@ -38,6 +39,10 @@ class CUtils:
         except KeyError:
             value = default_value
         return value
+
+    @classmethod
+    def one_id(cls):
+        return uuid.uuid4().hex
 
 
 if __name__ == '__main__':

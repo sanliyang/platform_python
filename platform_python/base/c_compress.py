@@ -57,7 +57,7 @@ class CCompress(CResource):
                 file_set_relative_path = map(CFile.get_relative_path, file_list_with_path, root_list_path)
                 with CProcessBar(
                         len(file_list_with_path),
-                        f"{CFile.get_file_main_name(self.source_path)} 压缩"
+                        f"{CFile.get_file_main_name(self.source_path)} compressing..."
                 ) as cb:
                     for file_relative_path in file_set_relative_path:
                         compress_obj.add(file_relative_path)
@@ -80,7 +80,7 @@ class CCompress(CResource):
                 file_set_relative_path = map(CFile.get_relative_path, file_list_with_path, root_list_path)
                 with CProcessBar(
                         len(file_list_with_path),
-                        f"{CFile.get_file_main_name(self.source_path)} 压缩"
+                        f"{CFile.get_file_main_name(self.source_path)} compressing..."
                 ) as cb:
                     for file_relative_path in file_set_relative_path:
                         compress_obj.write(file_relative_path)
@@ -108,7 +108,7 @@ class CCompress(CResource):
                 file_set_relative_path = map(CFile.get_relative_path, file_list_with_path, root_list_path)
                 with CProcessBar(
                         len(file_list_with_path),
-                        f"{CFile.get_file_main_name(self.source_path)} 压缩"
+                        f"{CFile.get_file_main_name(self.source_path)} compressing..."
                 ) as cb:
                     for file_relative_path in file_set_relative_path:
                         compress_obj.write(
