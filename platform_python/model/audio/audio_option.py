@@ -29,7 +29,7 @@ class audio_option:
         name_with_path = CFile.path_join(self.target_path, main_name)
         if self.audio_obj is not None:
             self.log.info("正在对[{0}]文件进行格式转换， 正在转换为[{1}]...".format(self.audio_path, self.ext))
-            self.audio_obj.export(CFile.chenge_suffix(name_with_path, self.ext), format=str(self.ext))
+            self.audio_obj.export(CFile.change_suffix(name_with_path, self.ext), format=str(self.ext))
         else:
             self.log.info("文件对象为空，无法进行格式转换，请检查[{0}]音频对象是否加载成功...".format(self.audio_path))
 

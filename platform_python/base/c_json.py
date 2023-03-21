@@ -45,6 +45,8 @@ class CJson:
             return value
         if type(value) == list:
             return value[CResource.CONSTENT_ZERO]
+        if type(value) == dict:
+            return value
 
 
 if __name__ == '__main__':
@@ -53,7 +55,7 @@ if __name__ == '__main__':
         '''
             {"foo": {"bar": [{"name": "one"}, {"name": "two"}]}}
         ''')
-    x = cj.json_path('foo.bar[*].name')
+    x = cj.json_path('foo.bar[*].name[0]')
     print(x)
 
     y = cj.json_path_one('foo.bar[*].name')

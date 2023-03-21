@@ -13,12 +13,12 @@ from base.c_result import CResult
 from base.c_utils import CUtils
 
 
-class NodeBase(metaclass=abc.ABCMeta, CResource):
+class NodeBase(CResource, metaclass=abc.ABCMeta):
 
-    def __init__(self, node_json):
-        self.input_list = CUtils.get_input(node_json)
-        self.output_list = CUtils.get_output(node_json)
-        self.params = CUtils.get_params(node_json)
+    def __init__(self, *args, **kwargs):
+        self.input_list = None
+        self.output_list = []
+        self.params = None
 
     @abc.abstractmethod
     def help(self):
@@ -50,14 +50,24 @@ class NodeBase(metaclass=abc.ABCMeta, CResource):
             "this is a check_input test"
         )
 
-    def _run(self):
+    def run(self):
         return CResult.merge_result(
             self.RESULT_SUCCESS,
             "this is a _run test"
         )
 
-    def _run_test(self):
-        return CResult.merge_result(
-            self.RESULT_SUCCESS,
-            "this is a _run_test test"
-        )
+    def get_config(self, node_config):
+        self.input_list = CUtils.get_input(node_config)
+        self.params = CUtils.get_params(node_config)
+
+    def update_output(self, output_obj):
+        self.output_list.append(output_obj)
+
+    def save_ouput(self):
+        ...
+
+    @classmethod
+    def run_test(cls, node_config):
+        class_obj = cls()
+        class_obj.get_config(node_config)
+        class_obj.run()

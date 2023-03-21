@@ -29,7 +29,7 @@ class CFile:
 
     @classmethod
     def path_is_exist(cls, path):
-        return pathlib.Path(path).exists()
+        return os.path.exists(path)
 
     @classmethod
     def is_file(cls, path):
@@ -72,7 +72,7 @@ class CFile:
         file_obj.replace(new_file)
 
     @classmethod
-    def chenge_suffix(cls, file_path, new_suffix):
+    def change_suffix(cls, file_path, new_suffix):
         file_obj = pathlib.Path(file_path)
         new_file = file_obj.with_suffix(new_suffix)
         file_obj.replace(new_file)
@@ -186,10 +186,13 @@ if __name__ == '__main__':
 
     # file_size, size_unit = CFile.get_file_size(r"D:\gdbgdb\530402红塔区.gdb\a00000029.gdbtable", "KB")
     # print(file_size, size_unit)
-    file_list = CFile.find_file_from_path(r"D:\测试", "*", True)
-    root_list = [r"D:\测试"] * len(file_list)
-    print(file_list)
-    results = map(CFile.get_relative_path, file_list, root_list)
-    print(results)
-    for result in results:
-        print(result)
+    # file_list = CFile.find_file_from_path(r"D:\测试", "*", True)
+    # root_list = [r"D:\测试"] * len(file_list)
+    # print(file_list)
+    # results = map(CFile.get_relative_path, file_list, root_list)
+    # print(results)
+    # for result in results:
+    #     print(result)
+
+    print(CFile.mk_dir("{sas/sas}"))
+
