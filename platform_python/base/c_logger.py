@@ -96,8 +96,14 @@ class CLogger(CResource):
             self.logger.error(msg, *args, **kwargs)
         elif level == self.LOG_CRITICAL:
             self.logger.critical(msg, *args, **kwargs)
-        self.handler_console.close()
-        self.handler_file.close()
+        self.__close()
+
+    def __close(self):
+        self.logger.removeHandler(self.handler_file)
+        self.logger.removeHandler(self.handler_console)
+
+    def print_handle(self):
+        return self.logger.handlers
 
     def debug(self, msg):
         self.__do_process(self.LOG_DEBUG, msg)
@@ -116,5 +122,5 @@ class CLogger(CResource):
 
 
 if __name__ == '__main__':
-    logger = CLogger(True)
+    logger = CLogger(False)
     logger.info("name")

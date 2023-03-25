@@ -64,7 +64,7 @@ class CompressFile(NodeBase):
             self.compress_level = 6
         return CResult.merge_result(
             self.RESULT_SUCCESS,
-            "输入参数检查成功，算法将继续运行"
+            "输入参数检查成功，算法将继续运行..."
         )
 
     def check_input(self):
@@ -78,7 +78,7 @@ class CompressFile(NodeBase):
             )
         return CResult.merge_result(
             self.RESULT_SUCCESS,
-            "输入文件检查成功，算法将继续运行"
+            "输入文件检查成功，算法将继续运行..."
         )
 
     def compress(self, file_name_with_path) -> CResult:
@@ -90,12 +90,12 @@ class CompressFile(NodeBase):
             cc.compress()
             result = CResult.merge_result(
                 self.RESULT_SUCCESS,
-                f"{file_name_with_path}正在被压缩成{target_path_with_name}"
+                f"{file_name_with_path}正在被压缩成{target_path_with_name}..."
             )
         except Exception as error:
             result = CResult.merge_result(
                 self.RESULT_FAILD,
-                f"{file_name_with_path}压缩失败，具体原因是[{error}], 请检查修正"
+                f"{file_name_with_path}压缩失败，具体原因是[{error}], 请检查修正!"
             )
         return result
 
@@ -129,7 +129,7 @@ if __name__ == '__main__':
             "output": [],
             "params": {
                 "target_path": "D:/西三旗数据入库/人口数据",
-                "target_suffix": ".zip",
+                "target_suffix": "tar.gz",
                 "password": "123",
                 "compress_level": 6
             }

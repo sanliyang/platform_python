@@ -23,21 +23,21 @@ class CCompress(CResource):
         self.source_path = source_path
         self.target_path = target_path
         self.compress_mapping = {
-            ".zip": [self.__compress_with_zip, self.__decompress_with_zip],
-            ".gz": [self.__compress_with_tar_gz, self.__decompress_with_tar_gz],
-            ".7z": [self.__compress_with_7z, self.__decompress_with_7z],
-            ".xz": [self.__compress_with_7z, self.__decompress_with_7z],
-            ".bz2": [self.__compress_with_7z, self.__decompress_with_7z],
-            ".wim": [self.__compress_with_7z, self.__decompress_with_7z],
-            ".rar": ["", self.__decompress_with_rar]
+            "zip": [self.__compress_with_zip, self.__decompress_with_zip],
+            "gz": [self.__compress_with_tar_gz, self.__decompress_with_tar_gz],
+            "7z": [self.__compress_with_7z, self.__decompress_with_7z],
+            "xz": [self.__compress_with_7z, self.__decompress_with_7z],
+            "bz2": [self.__compress_with_7z, self.__decompress_with_7z],
+            "wim": [self.__compress_with_7z, self.__decompress_with_7z],
+            "rar": ["", self.__decompress_with_rar]
         }
         self.compress_mapping_with_passwod = {
-            ".zip": [self.__compress_with_7z, self.__decompress_with_7z],
-            ".gz": [self.__compress_with_7z, self.__decompress_with_7z],
-            ".7z": [self.__compress_with_7z, self.__decompress_with_7z],
-            ".xz": [self.__compress_with_7z, self.__decompress_with_7z],
-            ".bz2": [self.__compress_with_7z, self.__decompress_with_7z],
-            ".wim": [self.__compress_with_7z, self.__decompress_with_7z],
+            "zip": [self.__compress_with_7z, self.__decompress_with_7z],
+            "gz": [self.__compress_with_7z, self.__decompress_with_7z],
+            "7z": [self.__compress_with_7z, self.__decompress_with_7z],
+            "xz": [self.__compress_with_7z, self.__decompress_with_7z],
+            "bz2": [self.__compress_with_7z, self.__decompress_with_7z],
+            "wim": [self.__compress_with_7z, self.__decompress_with_7z],
         }
         self.password = password
         self.compress_level = compress_level

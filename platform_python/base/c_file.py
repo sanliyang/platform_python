@@ -25,7 +25,7 @@ class CFile:
 
     @classmethod
     def get_suffix(cls, file_path):
-        return pathlib.Path(file_path).suffix
+        return pathlib.Path(file_path).suffix.strip(".")
 
     @classmethod
     def path_is_exist(cls, path):
