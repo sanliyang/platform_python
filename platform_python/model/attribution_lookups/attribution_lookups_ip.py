@@ -18,7 +18,7 @@ class AttributionLookupsIp:
     def __init__(self, ip_address):
         # https://www.ip2location.com/development-libraries/ip2location/python
         # database = IP2Location.IP2Location(os.path.join("data", "IPV6-COUNTRY.BIN"), "SHARED_MEMORY")
-        self.database = IP2Location.IP2Location("../third_part/IP2LOCATION-LITE-DB5.BIN")
+        self.database = IP2Location.IP2Location("../../third_part/IP2LOCATION-LITE-DB5.BIN")
         self.rec = self.database.get_all(ip_address)
         self.detail_msg = None
         self.cj = CJson()
