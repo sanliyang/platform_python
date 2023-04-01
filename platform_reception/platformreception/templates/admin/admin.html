@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin</title>
+    <link rel="stylesheet" href="{{ static('admin/css/admin.css') }}" />
+    <script type="text/javascript" src="{{ static('admin/js/jquery_mini.js')}}"></script>
+    <script type="text/javascript" src="{{ static('admin/js/admin.js') }}"></script>
+
+</head>
+
+<body>
+    <div id="admin_div">
+        <form id="admin_form">
+            <input id="admin_csrf" type="hidden" name="csrfmiddlewaretoken" value={{ csrf_token }}>
+            <h2>platform_reception</h2>
+            <p>用户名:<input id="username" name="username" type="text"></p>
+
+            <p>密&nbsp&nbsp&nbsp码:<input id="password" name="password" type="password"></p>
+
+            <div id="but_div">
+                <input type="button" class="button"  onclick="submit_msg()" onmouseover="mouse_over_login(this)" onmouseleave="mouse_leave(this)" value="登陆">
+                <input type="button" class="button"  onclick="redirct_regist()" onmouseover="mouse_over_login(this)" onmouseleave="mouse_leave(this)" value="注册">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
