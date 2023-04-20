@@ -6,6 +6,7 @@
 
 import configparser
 
+from base.c_project import CProject
 from base.c_resource import CResource
 
 
@@ -29,8 +30,7 @@ class CConfig(CResource):
 
 
 if __name__ == '__main__':
-    cg = CConfig(CResource.config_path)
+    cg = CConfig(CProject.config_path())
     print(cg.get_all_sections())
-    print(cg.get_options('tools_log'))
-    print(cg.get_items('tools_log'))
-    print(cg.get_value('tools_log', 'log.dir.relative.path'))
+    print(cg.get_options('email'))
+    print(cg.get_value('email', 'auth_pass'))

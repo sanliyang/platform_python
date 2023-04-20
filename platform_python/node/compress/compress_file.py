@@ -24,7 +24,7 @@ class CompressFile(NodeBase):
         self.target_suffix = None
         self.password = None
         self.compress_level = None
-        NodeBase.__init__(self)
+        # NodeBase.__init__(self)
 
     def help(self):
         return '''

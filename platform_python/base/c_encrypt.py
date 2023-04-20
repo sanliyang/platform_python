@@ -79,13 +79,22 @@ class CEncrypt:
 
 
 if __name__ == '__main__':
-    # z = "test"
-    # x = CEncrypt.str_2_base64(z)
-    # print(x)
-    # y = CEncrypt.base64_2_str(x)
-    # print(y)
+    import json
+    z = '''
+    {
+    "user": "0.0.0.0",
+    "start_date": "2023-04-10",
+    "end_date": "2024-04-13"
+    }
+    '''
+    x = CEncrypt.str_2_base64(z)
+    print(x)
+    y = CEncrypt.base64_2_str(x)
+    print(y)
+    print(json.loads(y))
+    print(y["user"])
     # k = CEncrypt.str_2_md5(z)
     # print(k)
     # 文件指纹获取
-    file_fingerprint = CEncrypt.file_sha1(r"D:\工具\Windows10\Windows 10 x64-s001.vmdk")
-    print(file_fingerprint)
+    # file_fingerprint = CEncrypt.file_sha1(r"D:\工具\Windows10\Windows 10 x64-s001.vmdk")
+    # print(file_fingerprint)

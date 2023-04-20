@@ -58,3 +58,6 @@ class CResource:
     NODE_OUTPUT = "output"
     NODE_PARAMS = "params"
 
+    # config path
+    CONFIG_NAME = "workflow_platform.ini"
+
