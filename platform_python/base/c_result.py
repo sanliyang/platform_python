@@ -9,15 +9,21 @@
 ++++++++++++++++++++++++++++++++++++++ """
 from base.c_json import CJson
 from base.c_resource import CResource
+from base.c_logger import CLogger
 
 
 class CResult:
+    logger = CLogger(False)
 
     @classmethod
-    def merge_result(cls, result_result, result_messag):
+    def merge_result(cls, result_result, result_message):
         result = dict()
         result["result_result"] = result_result,
-        result["message"] = result_messag
+        result["message"] = result_message
+        if result_result == CResource.RESULT_SUCCESS:
+            cls.logger.info(result_message)
+        if result_result == CResource.RESULT_FAILD:
+            cls.logger.error(result_message)
         cj = CJson()
         cj.load(result)
         return cj

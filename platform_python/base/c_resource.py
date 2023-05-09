@@ -12,6 +12,7 @@ class CResource:
     NODE_WAIT = 1
     NODE_PROCESS = 2
     NODE_SUCESS = 0
+    NODE_FINISH = -1
     # 人为参数输入为 异常(31)， 算法主体执行中遇到问题为 失败(3)
     NODE_FAILD = 3
     NODE_EXCEPTION = 31

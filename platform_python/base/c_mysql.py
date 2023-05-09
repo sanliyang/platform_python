@@ -11,11 +11,13 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import QueuePool
 
+from c_resource import CResource
+
 engine = create_engine("mysql+pymysql://{0}:{1}@{2}/{3}".format(
             "root",
             "root",
-            "127.0.0.1",
-            "log"
+            "localhost",
+            "python_platform"
         ), poolclass=QueuePool)
 
 
@@ -45,19 +47,12 @@ class CMysql:
 
 if __name__ == '__main__':
     om = CMysql()
-    om.execute(
+    a = om.fetchall(
         '''
-        insert into system_log(
-        log_level, log_file_name, log_file_no, log_msg, log_type
-        ) values (
-        :key, :log_file_name, :log_file_no, :log_msg, :log_type
-        )
+        select node_config from python_platform.do_nodes where node_id =:node_id
         ''', {
-            "key": 'warning',
-            "log_file_name": 'name',
-            "log_file_no": 34,
-            "log_msg": 'msg',
-            "log_type": "type"
+            "node_id": '123'
         }
     )
+    print(a[0][0])
     om.close()

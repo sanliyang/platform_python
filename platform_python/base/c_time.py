@@ -176,3 +176,5 @@ if __name__ == '__main__':
     print(CTime.get_date())
 
     print(CTime.format_timestamp(CTime.get_now_timestamp(), "/"))
+
+    print(datetime.date.today() + datetime.timedelta(days=(-1)))

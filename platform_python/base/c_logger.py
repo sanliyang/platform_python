@@ -105,20 +105,20 @@ class CLogger(CResource):
     def print_handle(self):
         return self.logger.handlers
 
-    def debug(self, msg):
-        self.__do_process(self.LOG_DEBUG, msg)
+    def debug(self, msg, *args, **kwargs):
+        self.__do_process(self.LOG_DEBUG, msg, *args, **kwargs)
 
-    def info(self, msg):
-        self.__do_process(self.LOG_INFO, msg)
+    def info(self, msg, *args, **kwargs):
+        self.__do_process(self.LOG_INFO, msg, *args, **kwargs)
 
-    def warning(self, msg):
-        self.__do_process(self.LOG_WARNING, msg)
+    def warning(self, msg, *args, **kwargs):
+        self.__do_process(self.LOG_WARNING, msg, *args, **kwargs)
 
-    def error(self, msg):
-        self.__do_process(self.LOG_ERROR, msg)
+    def error(self, msg, *args, **kwargs):
+        self.__do_process(self.LOG_ERROR, msg, *args, **kwargs)
 
-    def critical(self, msg):
-        self.__do_process(self.LOG_CRITICAL, msg)
+    def critical(self, msg, *args, **kwargs):
+        self.__do_process(self.LOG_CRITICAL, msg, *args, **kwargs)
 
 
 if __name__ == '__main__':

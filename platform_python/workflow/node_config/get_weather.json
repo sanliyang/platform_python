@@ -1,0 +1,12 @@
+{
+  "class_name": "GetWeather",
+  "node_type": "weather",
+  "model_name": "get_weather",
+  "config": {
+      "input": [],
+      "output": [],
+      "params": {
+          "city": "北京"
+      }
+  }
+}

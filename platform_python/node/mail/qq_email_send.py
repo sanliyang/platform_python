@@ -17,6 +17,7 @@ from base.c_file import CFile
 from base.c_project import CProject
 from base.c_result import CResult
 from base.c_utils import CUtils
+from c_resource import CResource
 from node.base.node_base import NodeBase
 
 
@@ -104,8 +105,9 @@ class QQEmailSend(NodeBase):
         # 创建smtp对象
         self.create_smtp_obj()
         self.login_smtp()
-        self.send(self.input_list)
+        send_result = self.send(self.input_list)
         self.logout_smtp()
+        return send_result
 
     def create_smtp_obj(self):
         self.smtp_obj = smtplib.SMTP_SSL(host=self.mail_host, port=self.mail_port)
@@ -149,21 +151,20 @@ class QQEmailSend(NodeBase):
         mail_msg.attach(MIMEText(self.email_content, self.email_type, self.ENCODE_UTF8))
 
         # 判断是否存在附件
-        if self.email_annex is not None:
+        if self.email_annex is not None and self.email_annex != "":
             mail_msg = self.add_annex(mail_msg)
 
         send_result = self.smtp_obj.sendmail(from_addr=self.send_user, to_addrs=email_target, msg=mail_msg.as_string())
         if send_result == {}:
-            CResult.merge_result(
+            return CResult.merge_result(
                 self.RESULT_SUCCESS,
                 f"邮件已经成功发送到{email_target}"
             )
         else:
-            CResult.merge_result(
+            return CResult.merge_result(
                 self.RESULT_FAILD,
                 f"邮件发送到{email_target}失败！"
             )
-        print(f"邮件已经成功发送到{email_target}")
 
     def add_annex(self, email_msg):
         # 添加附件

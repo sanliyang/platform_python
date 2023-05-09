@@ -47,6 +47,8 @@ class CJson:
             return value[CResource.CONSTENT_ZERO]
         if type(value) == dict:
             return value
+        if type(value) == int:
+            return value
 
 
 if __name__ == '__main__':

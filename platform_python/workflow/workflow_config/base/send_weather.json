@@ -1,0 +1,49 @@
+{
+  "workflow_name": "send_weather",
+  "workflow_id": "send_weather",
+  "line": [
+    {
+      "from": "12",
+      "to": "23"
+    }
+  ],
+  "params": {
+    "city": "",
+    "email_title": "",
+    "email_type": "",
+    "email_annex": "",
+    "email_annex_type": ""
+  },
+  "node_list": [
+    {
+      "id": "12",
+      "class_name": "GetWeather",
+      "node_type": "weather",
+      "model_name": "get_weather",
+      "config": {
+        "input": [],
+        "output": [],
+        "params": {
+            "city": "${workflow.params.city}"
+        }
+      }
+    },
+    {
+      "id": "23",
+      "class_name": "QQEmailSend",
+      "node_type": "mail",
+      "model_name": "qq_email_send",
+      "config": {
+          "input": [],
+          "output": [],
+          "params": {
+              "email_title": "${workflow.params.email_title}",
+              "email_content": "${workflow.get_weather.output}",
+              "email_type": "${workflow.params.email_type}",
+              "email_annex": "${workflow.params.email_annex}",
+              "email_annex_type": "${workflow.params.email_annex_type}"
+          }
+      }
+    }
+  ]
+}

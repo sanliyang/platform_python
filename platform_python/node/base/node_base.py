@@ -8,6 +8,8 @@
 @desc->
 ++++++++++++++++++++++++++++++++++++++ """
 import abc
+
+from base.c_mysql import CMysql
 from base.c_resource import CResource
 from base.c_result import CResult
 from base.c_utils import CUtils
@@ -20,9 +22,23 @@ class NodeBase(CResource, metaclass=abc.ABCMeta):
         self.output_list = []
         self.params = None
         self.node_id = None
+        self.node_config = None
+        self.cm = CMysql()
 
-    def get_node_id(self):
-        self.node_id = CUtils.one_id()
+    def get_node_id(self, node_id):
+        self.node_id = node_id
+
+    def update_status(self, node_status):
+        self.cm.execute(
+            '''
+            update python_platform.do_nodes 
+            set node_status =:node_status 
+            where node_id =:node_id
+            ''', {
+                "node_status": node_status,
+                "node_id": self.node_id
+            }
+        )
 
     @abc.abstractmethod
     def help(self):
@@ -45,24 +61,47 @@ class NodeBase(CResource, metaclass=abc.ABCMeta):
     def check_params(self):
         return CResult.merge_result(
             self.RESULT_SUCCESS,
-            "this is a check_params test"
+            "check_params 方法调用初始化！"
         )
 
     def check_input(self):
         return CResult.merge_result(
             self.RESULT_SUCCESS,
-            "this is a check_input test"
+            "check_input 方法调用初始化！"
         )
 
     def run(self):
+        if self.node_id is not None:
+            self.update_status(CResource.NODE_PROCESS)
+        self.get_node_config()
+        self.get_config(None)
         result_check_input = self.check_input()
         result_check_params = self.check_params()
         result = CResult.result_xor(result_check_input, result_check_params)
         return result
 
+    def get_node_config(self):
+        """
+        从数据库中读取当前任务的配置
+        :return:
+        """
+        try:
+            self.node_config = self.cm.fetchall(
+                '''
+                select node_config from python_platform.do_nodes where node_id =:node_id
+                ''', {
+                    "node_id": self.node_id
+                }
+            )[0][0]
+        except:
+            self.node_config = None
+
     def get_config(self, node_config):
-        self.input_list = CUtils.get_input(node_config)
-        self.params = CUtils.get_params(node_config)
+        if self.node_config is None:
+            self.node_config = node_config
+        if self.node_config is not None:
+            self.input_list = CUtils.get_input(self.node_config)
+            self.params = CUtils.get_params(self.node_config)
 
     def update_output(self, output_obj):
         if type(output_obj) == str:
@@ -71,7 +110,15 @@ class NodeBase(CResource, metaclass=abc.ABCMeta):
             self.output_list = output_obj
 
     def save_ouput(self):
-        ...
+        self.cm.execute(
+            '''
+            update python_platform.do_nodes 
+            set node_config = JSON_ARRAY_APPEND(node_config, '$.output', :output) where node_id =:node_id
+            ''', {
+                "output": self.output_list,
+                "node_id": self.node_id
+            }
+        )
 
     @classmethod
     def run_test(cls, node_config):
