@@ -7,6 +7,8 @@
 @create->time 2023/4/20-16:41
 @desc->
 ++++++++++++++++++++++++++++++++++++++ """
+from starlette.templating import Jinja2Templates
+
 from base.c_file import CFile
 from base.c_resource import CResource
 
@@ -20,3 +22,7 @@ class CProject:
     @classmethod
     def config_path(cls):
         return CFile.path_join(cls.project_path(), CResource.CONFIG_NAME)
+
+    @classmethod
+    def get_template(cls):
+        return Jinja2Templates(directory="../template")

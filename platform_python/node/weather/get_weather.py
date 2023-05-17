@@ -7,15 +7,12 @@
 @create->time 2023/4/20-17:09
 @desc->
 ++++++++++++++++++++++++++++++++++++++ """
-import requests
-
-from base.c_config import CConfig
 from base.c_json import CJson
-from base.c_project import CProject
 from base.c_resource import CResource
 from base.c_result import CResult
 from base.c_utils import CUtils
 from node.base.node_base import NodeBase
+from model.weather.catch_weather import CatchWeather
 
 
 class GetWeather(NodeBase):
@@ -53,13 +50,6 @@ class GetWeather(NodeBase):
             )
         self.city = CUtils.dict_value_by_name(self.params, "city", None)
 
-        # 获取网站 url 用户名 和 凭证
-        # 从配置文件中读取 发送邮箱和验证信息
-        cc = CConfig(CProject.config_path())
-        self.weather_url = cc.get_value('weather', 'weather_url')
-        self.weather_user = cc.get_value('weather', 'weather_user')
-        self.weather_pass = cc.get_value('weather', 'weather_pass')
-
         if self.city is None:
             return CResult.merge_result(
                 self.NODE_EXCEPTION,
@@ -71,12 +61,8 @@ class GetWeather(NodeBase):
         )
 
     def get_weather(self):
-        response = requests.get(url=self.weather_url, params={
-            "appid": self.weather_user,
-            "appsecret": self.weather_pass,
-            "city": self.city,
-            "unescape": 1
-        })
+        cw = CatchWeather()
+        response = cw.get_weather(self.city)
         if response.status_code == 200:
             return CResult.merge_result(
                 CResource.RESULT_SUCCESS,
