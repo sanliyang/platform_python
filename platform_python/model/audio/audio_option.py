@@ -38,7 +38,6 @@ class audio_option:
         reverse_obj.export(out_path)
 
 
-
 if __name__ == '__main__':
     ao = audio_option(r'C:\Users\sanliy\Music\VipSongsDownload\梦的光点.mflac', r'C:\Users\sanliy\Music', 'flac')
     ao.conversion()

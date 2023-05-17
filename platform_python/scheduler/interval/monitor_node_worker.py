@@ -94,7 +94,6 @@ class MonitorNodeWorker(BaseWorker):
                     "node_id": node_id
                 }
             )
-            # todo 通过查找，尝试创建下一个算法， 如果有下一个算法就创建， 没有就不创建， 并且对算法和流程进行监控
             workflow_config = self.cm.fetchall(
                 '''
                 select workflow_line, workflow_node_list, workflow_params

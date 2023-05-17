@@ -17,7 +17,6 @@ from base.c_file import CFile
 from base.c_project import CProject
 from base.c_result import CResult
 from base.c_utils import CUtils
-from c_resource import CResource
 from node.base.node_base import NodeBase
 
 
