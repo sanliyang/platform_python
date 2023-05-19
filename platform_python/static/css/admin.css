@@ -1,123 +1,38 @@
-/* 全局样式 */
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-/* 导航菜单样式 */
-
-nav {
-    background-color: #f2f2f2;
-    padding: 20px;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-}
-
-.nav-links li {
-    margin-right: 20px;
-}
-
-.nav-links a {
-    color: #333;
-    text-decoration: none;
-    font-weight: bold;
-}
 
 /* 仪表盘样式 */
 
 .dashboard {
     padding: 40px;
+    text-align: center;
 }
 
 .dashboard h1 {
     font-size: 32px;
     margin-bottom: 20px;
+    color: #333;
 }
 
 .stats {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
+    justify-content: center;
+    align-items: center;
 }
 
 .stat {
-    text-align: center;
-    width: 200px;
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .stat h2 {
-    font-size: 20px;
+    font-size: 24px;
     margin-bottom: 10px;
 }
 
 .stat p {
-    font-size: 16px;
+    font-size: 18px;
 }
 
-/* 订单管理样式 */
-
-.orders {
-    padding: 40px;
-}
-
-.orders h1 {
-    font-size: 32px;
-    margin-bottom: 20px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-thead th {
-    background-color: #f2f2f2;
-    text-align: left;
-    padding: 10px;
-}
-
-tbody td {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-}
-
-/* 产品管理样式 */
-
-.products {
-    padding: 40px;
-}
-
-.products h1 {
-    font-size: 32px;
-    margin-bottom: 20px;
-}
-
-/* 客户管理样式 */
-
-.customers {
-    padding: 40px;
-}
-
-.customers h1 {
-    font-size: 32px;
-    margin-bottom: 20px;
-}
-
-/* 页脚样式 */
-
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-}
-
-footer p {
-    margin: 0;
-}

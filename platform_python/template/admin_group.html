@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>后台管理 - ABC 公司</title>
+    <title>权限分组 - ABC 公司</title>
     <link rel="stylesheet" href="{{url_for('static', path='/css/admin_bar.css')}}">
 
-    <link rel="stylesheet" href="{{url_for('static', path='/css/admin.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', path='/css/admin_group.css')}}">
 </head>
 <body>
     <header>
@@ -26,25 +26,32 @@
         </nav>
     </header>
 
-    <section class="dashboard">
-        <h1>仪表盘</h1>
-        <div class="stats">
-            <div class="stat">
-                <h2>用户数</h2>
-                <p>100</p>
-            </div>
-            <div class="stat">
-                <h2>产品数</h2>
-                <p>50</p>
-            </div>
-            <div class="stat">
-                <h2>订单数</h2>
-                <p>200</p>
-            </div>
-            <div class="stat">
-                <h2>报告数</h2>
-                <p>30</p>
-            </div>
+    <section class="permissions">
+        <h1>权限分组</h1>
+        <div class="permission-group">
+            <h2>管理员</h2>
+            <ul>
+                <li>管理用户</li>
+                <li>管理产品</li>
+                <li>管理订单</li>
+                <li>管理报告</li>
+            </ul>
+        </div>
+        <div class="permission-group">
+            <h2>编辑员</h2>
+            <ul>
+                <li>编辑内容</li>
+                <li>发布文章</li>
+                <li>更新资讯</li>
+            </ul>
+        </div>
+        <div class="permission-group">
+            <h2>普通用户</h2>
+            <ul>
+                <li>浏览产品</li>
+                <li>下订单</li>
+                <li>查看报告</li>
+            </ul>
         </div>
     </section>
 

@@ -1,0 +1,90 @@
+
+
+/* 权限管理样式 */
+
+.permissions {
+    padding: 40px;
+}
+
+.permissions h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.permission-group {
+    margin-bottom: 40px;
+}
+
+.permission-group h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.permission-group ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.permission-group li {
+    margin-bottom: 10px;
+}
+
+.add-group {
+    margin-top: 40px;
+}
+
+.add-group h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.add-group form {
+    margin-top: 20px;
+}
+
+.add-group .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.add-group .form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.add-group .form-group input,
+.add-group .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.btn-edit,
+.btn-delete {
+    color: #007bff;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.btn-delete {
+    color: #ff0000;
+}

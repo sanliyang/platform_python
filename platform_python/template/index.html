@@ -10,7 +10,7 @@
     <header>
         <nav>
             <div class="logo">
-                <img src="logo.png" alt="ABC 公司的徽标">
+                <img src="{{url_for('static', path='/image/logo.svg')}}" alt="ABC 公司的徽标">
             </div>
             <ul class="nav-links">
                 <li><a href="#">首页</a></li>
@@ -32,17 +32,17 @@
 
     <section class="features">
         <div class="feature">
-            <img src="feature1.png" alt="特点 1">
+            <img src="{{url_for('static', path='/image/业绩目标.png')}}" alt="特点 1">
             <h2>高品质产品</h2>
             <p>我们提供高品质的产品，满足您的需求。</p>
         </div>
         <div class="feature">
-            <img src="feature2.png" alt="特点 2">
+            <img src="{{url_for('static', path='/image/人力资源.png')}}" alt="特点 2">
             <h2>灵活的解决方案</h2>
             <p>我们为您提供灵活的解决方案，根据您的业务需求定制。</p>
         </div>
         <div class="feature">
-            <img src="feature3.png" alt="特点 3">
+            <img src="{{url_for('static', path='/image/信息管理.png')}}" alt="特点 3">
             <h2>卓越的客户服务</h2>
             <p>我们以卓越的客户服务为您提供全面支持。</p>
         </div>

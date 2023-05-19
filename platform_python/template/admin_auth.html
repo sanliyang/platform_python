@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>权限管理 - ABC 公司</title>
+    <link rel="stylesheet" href="{{url_for('static', path='/css/admin_bar.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', path='/css/admin_auth.css')}}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="{{url_for('static', path='/image/logo.svg')}}" alt="ABC 公司的徽标">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">仪表盘</a></li>
+                <li><a href="#">用户管理</a></li>
+                <li><a href="#">产品管理</a></li>
+                <li><a href="#">订单管理</a></li>
+                <li><a href="#">报告管理</a></li>
+                <li><a href="#">设置</a></li>
+                <li><a href="#">退出</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="permissions">
+        <h1>权限管理</h1>
+        <div class="permission-group">
+            <h2>管理员</h2>
+            <ul>
+                <li>管理用户</li>
+                <li>管理产品</li>
+                <li>管理订单</li>
+                <li>管理报告</li>
+                <li><a href="#" class="btn-edit">编辑</a></li>
+                <li><a href="#" class="btn-delete">删除</a></li>
+            </ul>
+        </div>
+        <div class="permission-group">
+            <h2>编辑员</h2>
+            <ul>
+                <li>编辑内容</li>
+                <li>发布文章</li>
+                <li>更新资讯</li>
+                <li><a href="#" class="btn-edit">编辑</a></li>
+                <li><a href="#" class="btn-delete">删除</a></li>
+            </ul>
+        </div>
+        <div class="permission-group">
+            <h2>普通用户</h2>
+            <ul>
+                <li>浏览产品</li>
+                <li>下订单</li>
+                <li>查看报告</li>
+                <li><a href="#" class="btn-edit">编辑</a></li>
+                <li><a href="#" class="btn-delete">删除</a></li>
+            </ul>
+        </div>
+        <div class="add-group">
+            <h2>新增权限分组</h2>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="group-name">权限分组名称</label>
+                    <input type="text" id="group-name" name="group-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="group-permissions">权限列表</label>
+                    <textarea id="group-permissions" name="group-permissions" required></textarea>
+                </div>
+                <button type="submit">新增</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 ABC 公司. 版权所有.</p>
+    </footer>
+</body>
+</html>
