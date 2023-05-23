@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>报告管理 - ABC 公司</title>
+    <link rel="stylesheet" href="{{url_for('static', path='/css/admin_bar.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', path='/css/admin_report.css')}}">
+</head>
+<body>
+    {% include 'admin_header.html' %}
+
+    <div class="content">
+        <h1>报告管理</h1>
+
+        <div class="report-list">
+            <div class="report-item">
+                <h3>报告 A</h3>
+                <p>报告描述信息...</p>
+                <div class="report-actions">
+                    <a href="#" class="btn-view">查看</a>
+                    <a href="#" class="btn-download">下载</a>
+                    <a href="#" class="btn-delete">删除</a>
+                </div>
+            </div>
+            <div class="report-item">
+                <h3>报告 B</h3>
+                <p>报告描述信息...</p>
+                <div class="report-actions">
+                    <a href="#" class="btn-view">查看</a>
+                    <a href="#" class="btn-download">下载</a>
+                    <a href="#" class="btn-delete">删除</a>
+                </div>
+            </div>
+            <!-- 更多报告项 -->
+        </div>
+    </div>
+
+{% include 'admin_footer.html' %}
+</body>
+</html>

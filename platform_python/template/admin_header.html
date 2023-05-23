@@ -1,0 +1,19 @@
+<header>
+        <nav>
+            <div class="logo">
+                <img src="{{url_for('static', path='/image/logo.svg')}}" alt="ABC 公司的徽标">
+            </div>
+            <div class="welcome-section">
+                <span class="welcome-message">欢迎 {{ username }}</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/admin/index">仪表盘</a></li>
+                <li><a href="/admin/user">用户管理</a></li>
+                <li><a href="/admin/product">产品管理</a></li>
+                <li><a href="/admin/order">订单管理</a></li>
+                <li><a href="/admin/report">报告管理</a></li>
+                <li><a href="/admin/setting">设置</a></li>
+                <li><a href="/admin/quit">退出</a></li>
+            </ul>
+        </nav>
+    </header>

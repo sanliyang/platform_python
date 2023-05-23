@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品管理 - ABC 公司</title>
+    <link rel="stylesheet" href="{{url_for('static', path='/css/admin_bar.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', path='/css/admin_product.css')}}">
+</head>
+<body>
+    {% include 'admin_header.html' %}
+
+    <div class="content">
+        <h1>产品管理</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>产品名称</th>
+                    <th>价格</th>
+                    <th>库存</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>产品 A</td>
+                    <td>$99.99</td>
+                    <td>10</td>
+                    <td>
+                        <a href="#" class="btn-edit">编辑</a>
+                        <a href="#" class="btn-delete">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>产品 B</td>
+                    <td>$49.99</td>
+                    <td>5</td>
+                    <td>
+                        <a href="#" class="btn-edit">编辑</a>
+                        <a href="#" class="btn-delete">删除</a>
+                    </td>
+                </tr>
+                <!-- 更多产品行 -->
+            </tbody>
+        </table>
+    </div>
+
+{% include 'admin_footer.html' %}
+</body>
+</html>

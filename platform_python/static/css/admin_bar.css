@@ -11,6 +11,7 @@ body {
 nav {
     background-color: #f2f2f2;
     padding: 20px;
+
 }
 
 .nav-links {
@@ -23,21 +24,57 @@ nav {
     margin-right: 20px;
 }
 
+.nav-links li:hover{
+    box-shadow: 10px 5px 5px #888888;
+}
+
 .nav-links a {
     color: #333;
     text-decoration: none;
     font-weight: bold;
 }
 
+.welcome-section {
+    /*display: flex;*/
+    align-items: center;
+    position: absolute;
+    top: 25px;
+    right: 10px;
+
+}
+
+.welcome-message {
+    color: #333;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+
 /* 页脚样式 */
+/*footer {*/
+/*    background-color: #333;*/
+/*    color: #fff;*/
+/*    padding: 20px;*/
+/*    text-align: center;*/
+/*    position: sticky;*/
+/*    bottom: 0;*/
+/*}*/
+
+footer p {
+    margin: 0;
+}
+
+.content {
+    flex: 1;
+}
 
 footer {
     background-color: #333;
     color: #fff;
-    text-align: center;
     padding: 20px;
-}
-
-footer p {
-    margin: 0;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }

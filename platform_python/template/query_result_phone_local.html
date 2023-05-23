@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>查询结果</title>
+    <link rel="stylesheet" href="{{url_for('static', path='/css/query_phone.css')}}">
+</head>
+<body>
+    <h1>查询结果</h1>
+    {% if error_message %}
+        <p class="error-message">{{ error_message }}</p>
+    {% else %}
+        <table>
+            <tr>
+                <th>手机号码</th>
+                <th>归属地</th>
+                <th>归属地邮政编码</th>
+                <th>归属地地区编号</th>
+                <th>手机所属运行商(携号转网只显示最初运行商)</th>
+            </tr>
+            <tr>
+                <td>{{ phone_msg.phone }}</td>
+                <td>{{ phone_msg.province }} {{ phone_msg.city }}</td>
+                <td>{{ phone_msg.zip_code }}</td>
+                <td>{{ phone_msg.area_code }}</td>
+                <td>{{ phone_msg.phone_type }}</td>
+            </tr>
+        </table>
+    {% endif %}
+    <a href="/tools/root">返回工具栏</a>
+</body>
+</html>

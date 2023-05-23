@@ -9,6 +9,9 @@ from starlette.staticfiles import StaticFiles
 from base.c_file import CFile
 from base.c_project import CProject
 from front_desk.admin import admin
+from starlette_session import SessionMiddleware
+from front_desk.api import admin_user_api
+from front_desk.root.tool import tools
 
 logger = CLogger()
 
@@ -18,7 +21,14 @@ app.include_router(phones_api.router)
 app.include_router(ip_api.router)
 app.include_router(weather_api.router)
 app.include_router(admin.router)
+app.include_router(admin_user_api.router)
+app.include_router(tools.router)
 
+app.add_middleware(
+    SessionMiddleware,
+    secret_key="secret",
+    cookie_name="username",
+)
 
 app.mount("/static", StaticFiles(directory=CFile.path_join(CProject.project_path(), "static")), name="static")
 

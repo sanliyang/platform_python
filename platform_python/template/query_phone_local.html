@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>手机号归属地查询</title>
+    <link rel="stylesheet" href="{{url_for('static', path='/css/query_phone.css')}}">
+</head>
+<body>
+    <h1>手机号归属地查询</h1>
+    <form action="/phones/query" method="post">
+        <div class="phone_div">
+            <label for="phone_number">请输入手机号码：</label>
+            <input type="text" id="phone_number" name="phone_number" required>
+            <button type="submit">查询</button>
+        </div>
+    </form>
+</body>
+</html>

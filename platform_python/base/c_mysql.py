@@ -10,9 +10,6 @@
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import QueuePool
-
-from c_resource import CResource
-
 engine = create_engine("mysql+pymysql://{0}:{1}@{2}/{3}".format(
             "root",
             "root",
@@ -29,12 +26,18 @@ class CMysql:
         self.session = session_maker()
 
     def fetchall(self, sql, *args, **kwargs):
-        self.cursor = self.session.execute(text(sql), *args, **kwargs)
-        self.session.commit()
-        return self.cursor.fetchall()
+        try:
+            self.cursor = self.session.execute(text(sql), *args, **kwargs)
+            self.session.commit()
+            result = self.cursor.fetchall()
+            return result
+        except:
+            return None
 
     def fetchone(self, sql, *args, **kwargs):
-        return self.fetchall(text(sql), *args, **kwargs)[0]
+        if self.fetchall(sql, *args, **kwargs) is None:
+            return None
+        return self.fetchall(sql, *args, **kwargs)[0]
 
     def execute(self, sql, *args, **kwargs):
         self.cursor = self.session.execute(text(sql), *args, **kwargs)
@@ -49,10 +52,8 @@ if __name__ == '__main__':
     om = CMysql()
     a = om.fetchall(
         '''
-        select node_config from python_platform.do_nodes where node_id =:node_id
-        ''', {
-            "node_id": '123'
-        }
+        select user_id, username, role, email from python_platform.user
+        '''
     )
-    print(a[0][0])
     om.close()
+    print(a)

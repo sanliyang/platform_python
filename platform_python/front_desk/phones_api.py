@@ -1,4 +1,7 @@
 from fastapi import APIRouter
+from fastapi.params import Form
+from starlette.responses import HTMLResponse
+
 from model.attribution_lookups.attribution_lookups_phone import AttributionLookupsPhone
 from base.c_logger import CLogger
 from base.c_project import CProject
@@ -15,8 +18,13 @@ router = APIRouter(
 templates = CProject.get_template()
 
 
-@router.get("/msg/{phone_number}")
-async def get_msg(request: Request, phone_number: str):
-    gpl = AttributionLookupsPhone(phone_number)
-    logger.info("正在查询[{0}]的详细信息！".format(phone_number))
-    return templates.TemplateResponse("phone.html", {"request": request, "phone": gpl.get_phone_json_msg()})
+@router.get("/phone_local", response_class=HTMLResponse)
+async def home(request: Request):
+    return templates.TemplateResponse("query_phone_local.html", {"request": request})
+
+
+@router.post("/query", response_class=HTMLResponse)
+async def query_phone(request: Request, phone_number: str = Form(...)):
+    alp = AttributionLookupsPhone(phone_number)
+    phone_msg = alp.get_phone_json_msg()
+    return templates.TemplateResponse("query_result_phone_local.html", {"request": request, "phone_msg": phone_msg})

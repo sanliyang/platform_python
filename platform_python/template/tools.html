@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>网站页面</title>
+  <link rel="stylesheet" href="{{url_for('static', path='/css/admin_bar.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', path='/css/tools.css')}}">
+</head>
+<body>
+  <div class="sidebar">
+  <div><h2>工具栏</h2></div>
+  <ul>
+    {% for tool_type in tools_type%}
+    <li class="sidebar-item">
+      <div onclick="toggleSubMenu(this)" class="sidebar-link">
+        {{tool_type["tool_type"]}}
+      </div>
+      <ul class="submenu">
+        {% for tool in tool_type["tool_list"] %}
+        <li class="sidebar-item1 sidebar-item" data-route={{tool["route"]}}>{{tool["name"]}}</li>
+        {% endfor %}
+      </ul>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+
+<div class="content" id="content"></div>
+</body>
+<script src="{{url_for('static', path='/js/tools.js')}}"></script>
+
+{% include 'admin_footer.html' %}
+</html>

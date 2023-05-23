@@ -8,22 +8,7 @@
     <link rel="stylesheet" href="{{url_for('static', path='/css/admin_auth.css')}}">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="{{url_for('static', path='/image/logo.svg')}}" alt="ABC 公司的徽标">
-            </div>
-            <ul class="nav-links">
-                <li><a href="#">仪表盘</a></li>
-                <li><a href="#">用户管理</a></li>
-                <li><a href="#">产品管理</a></li>
-                <li><a href="#">订单管理</a></li>
-                <li><a href="#">报告管理</a></li>
-                <li><a href="#">设置</a></li>
-                <li><a href="#">退出</a></li>
-            </ul>
-        </nav>
-    </header>
+    {% include 'admin_header.html' %}
     <section class="permissions">
         <h1>权限管理</h1>
         <div class="permission-group">
@@ -73,8 +58,6 @@
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2023 ABC 公司. 版权所有.</p>
-    </footer>
+{% include 'admin_footer.html' %}
 </body>
 </html>

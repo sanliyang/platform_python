@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户管理 - ABC 公司</title>
+    <link rel="stylesheet" href="{{url_for('static', path='/css/admin_bar.css')}}">
+
+    <link rel="stylesheet" href="{{url_for('static', path='/css/admin_user.css')}}">
+</head>
+<body>
+{% include 'admin_header.html' %}
+<div class="content">
+    <h1>用户管理</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>用户名</th>
+            <th>邮箱</th>
+            <th>角色</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users_msg %}
+        <tr>
+            <td>{{ user[0] }}</td>
+            <td>{{ user[1] }}</td>
+            <td>{{ user[3] }}</td>
+            <td>{{ user[2] }}</td>
+            <td>
+                <a href="#" class="btn-edit" onclick="openEditModal(1)">编辑</a>
+                <a href="/admin/user/delete/{{ user[1] }}" class="btn-delete">删除</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div id="editModal" class="modal">
+    <div class="modal-header" id="modalHeader">
+        <span class="close" onclick="closeEditModal()">&times;</span>
+        <h2>编辑用户信息</h2>
+    </div>
+    <div class="modal-content" >
+        <form id="editForm" onsubmit="saveUser(event)">
+            <label for="name">姓名:</label>
+            <input type="text" id="name" name="name">
+            <label for="email">邮箱:</label>
+            <input type="email" id="email" name="email">
+            <button type="submit">保存</button>
+        </form>
+    </div>
+</div>
+
+{% include 'admin_footer.html' %}
+</body>
+<script src="{{url_for('static', path='/js/admin_user.js')}}"></script>
+</html>
