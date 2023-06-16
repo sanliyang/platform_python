@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>爬虫平台</title>
+  <link rel="stylesheet" href="{{url_for('static', path='/css/spider_index.css')}}">
 </head>
 <body>
-$END$
+  <h1>爬虫平台</h1>
+
+  <!-- 步骤1：输入要爬取的网址 -->
+  <div id="step1" class="step">
+    <h2>步骤 1: 输入要爬取的网址</h2>
+    <form id="url-form">
+      <label for="url-input">目标网址:</label>
+      <input type="text" id="url-input" name="url" placeholder="输入要爬取的网址">
+
+      <button type="submit">开始爬取</button>
+    </form>
+  </div>
+
+  <!-- 步骤2：展示爬取结果 -->
+  <div id="step2" class="step">
+    <h2>步骤 2: 爬取结果</h2>
+    <div id="result"></div>
+    <button type="button" id="next-btn">继续下一步</button>
+  </div>
+
+  <script src="{{url_for('static', path='/js/spider_index.js')}}"></script>
 </body>
 </html>

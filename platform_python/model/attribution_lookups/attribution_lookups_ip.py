@@ -104,7 +104,7 @@ class AttributionLookupsIp:
 
 
 if __name__ == '__main__':
-    gip = AttributionLookupsIp("172.71.154.79")
+    gip = AttributionLookupsIp("xxxxxxxxxx")
     print(gip.get_city_piny())
     print(gip.get_region_piny())
     print(gip.get_country_short_en())
@@ -112,7 +112,7 @@ if __name__ == '__main__':
     print(gip.get_longitude())
     print(gip.get_latitude())
     detail_msg = gip.get_detail_json_msg(
-        "KuuyE4zrAqlhktHtiwh5OG2HcPGEvinj",
+        "xxxxxxxxxxxx",
         gip.get_longitude(),
         gip.get_latitude()
     )

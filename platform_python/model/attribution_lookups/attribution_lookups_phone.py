@@ -47,7 +47,7 @@ class AttributionLookupsPhone:
 
 
 if __name__ == '__main__':
-    gpl = AttributionLookupsPhone("13509874850")
+    gpl = AttributionLookupsPhone("xxxxxxx")
     phone_location = gpl.get_phone_json_msg()
     print(phone_location)
 

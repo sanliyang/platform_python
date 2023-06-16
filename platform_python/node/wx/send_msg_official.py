@@ -66,8 +66,8 @@ class SendMsgOfficial(NodeBase):
             return result
 
     def get_access_token(self):
-        appid = "wx73c307b0442b85b2"
-        secret = "91c48fae4b6871abe62d7ae81cef1584"
+        appid = "xxxxxxxxxx"
+        secret = "xxxxxxxxxxxx"
         resp = requests.get(
             url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={0}&secret={1}".format(
                 appid,

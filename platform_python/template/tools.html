@@ -7,6 +7,7 @@
 </head>
 <body>
   <div class="sidebar">
+    <a href="/" class="back-to-home">返回首页</a>
   <div><h2>工具栏</h2></div>
   <ul>
     {% for tool_type in tools_type%}
@@ -28,6 +29,5 @@
 <div class="content" id="content"></div>
 </body>
 <script src="{{url_for('static', path='/js/tools.js')}}"></script>
-
 {% include 'admin_footer.html' %}
 </html>
