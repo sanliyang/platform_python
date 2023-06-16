@@ -12,6 +12,8 @@ from front_desk.admin import admin
 from starlette_session import SessionMiddleware
 from front_desk.api import admin_user_api
 from front_desk.root.tool import tools
+from front_desk.product import product_line
+from front_desk.spider import spider_platform
 
 logger = CLogger()
 
@@ -23,6 +25,8 @@ app.include_router(weather_api.router)
 app.include_router(admin.router)
 app.include_router(admin_user_api.router)
 app.include_router(tools.router)
+app.include_router(product_line.router)
+app.include_router(spider_platform.router)
 
 app.add_middleware(
     SessionMiddleware,

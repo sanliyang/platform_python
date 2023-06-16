@@ -2,107 +2,32 @@
 <html>
 <head>
     <title>流程图编辑器</title>
-    <style>
-        #sidebar {
-            width: 200px;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #f0f0f0;
-            padding: 10px;
-            overflow-y: auto;
-        }
-
-        #canvas {
-            margin-left: 220px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            min-height: 100vh;
-            position: relative;
-        }
-
-        .algorithm-block {
-            width: 100px;
-            height: 50px;
-            background-color: #ddd;
-            border: 1px solid #aaa;
-            text-align: center;
-            line-height: 50px;
-            cursor: move;
-            margin-bottom: 10px;
-            position: absolute;
-        }
-    </style>
+    <link rel="stylesheet" href="{{url_for('static', path='/css/product_lines.css')}}">
 </head>
 <body>
 <div id="sidebar">
-    <div class="algorithm-block" draggable="true" ondragstart="drag(event, '算法1')">算法1</div>
-    <div class="algorithm-block" draggable="true" ondragstart="drag(event, '算法2')">算法2</div>
-    <div class="algorithm-block" draggable="true" ondragstart="drag(event, '算法3')">算法3</div>
+    <a href="/" class="back-to-home">返回首页</a>
+    <h2>算法列表</h2>
+    <ul>
+        {% for one_node_msg in all_nodes_msg %}
+        <li class="sidebar-item">
+            <div onclick="toggleSubMenu(this)" class="sidebar-link">
+                {{one_node_msg["onde_node_type"]}}
+            </div>
+            <ul class="submenu">
+                <li class="sidebar-item1 sidebar-item algorithm-block" draggable="true"
+                    ondragstart="drag(event, {{one_node_msg['node_id']}})" id="{{one_node_msg['node_id']}}">{{one_node_msg["one_node_zh_name"]}}
+                </li>
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
 </div>
+
 <div id="canvas" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-
-<script>
-    function allowDrop(event) {
-        event.preventDefault();
-    }
-
-    function drag(event, algorithmName) {
-        event.dataTransfer.setData("text", algorithmName);
-    }
-
-    function drop(event) {
-        event.preventDefault();
-        var algorithmName = event.dataTransfer.getData("text");
-        var algorithmBlock = document.createElement("div");
-        algorithmBlock.className = "algorithm-block";
-        algorithmBlock.innerText = algorithmName;
-
-        algorithmBlock.style.left = (event.clientX - event.target.getBoundingClientRect().left - event.target.clientLeft - algorithmBlock.offsetWidth / 2) + "px";
-        algorithmBlock.style.top = (event.clientY - event.target.getBoundingClientRect().top - event.target.clientTop - algorithmBlock.offsetHeight / 2) + "px";
-
-        event.target.appendChild(algorithmBlock);
-
-        algorithmBlock.addEventListener("mousedown", startDrag);
-        algorithmBlock.addEventListener("mouseup", stopDrag);
-    }
-
-    var selectedAlgorithm = null;
-    var offset = {x: 0, y: 0};
-
-    function startDrag(event) {
-        selectedAlgorithm = event.target;
-        offset.x = event.clientX - selectedAlgorithm.getBoundingClientRect().left;
-        offset.y = event.clientY - selectedAlgorithm.getBoundingClientRect().top;
-        document.addEventListener("mousemove", dragAlgorithm);
-    }
-
-    function stopDrag() {
-        selectedAlgorithm = null;
-        document.removeEventListener("mousemove", dragAlgorithm);
-    }
-
-    function dragAlgorithm(event) {
-        if (selectedAlgorithm) {
-            selectedAlgorithm.style.left = (event.clientX - offset.x - canvas.getBoundingClientRect().left) + "px";
-            selectedAlgorithm.style.top = (event.clientY - offset.y - canvas.getBoundingClientRect().top) + "px";
-        }
-    }
-
-    window.addEventListener("load", function () {
-        var sidebar = document.getElementById("sidebar");
-        var algorithmBlocks = sidebar.getElementsByClassName("algorithm-block");
-        var totalHeight = 0;
-
-        for (var i = 0; i < algorithmBlocks.length; i++) {
-            algorithmBlocks[i].style.top = i * (algorithmBlocks[i].offsetHeight + 10) + "px";
-            totalHeight += algorithmBlocks[i].offsetHeight + 10;
-        }
-
-        sidebar.style.minHeight = totalHeight + "px";
-    });
-</script>
 </body>
+<script src="{{url_for('static', path='/js/product_lines.js')}}"></script>
+
+
 </html>
 

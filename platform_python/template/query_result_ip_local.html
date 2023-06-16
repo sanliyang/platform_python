@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>查询结果</title>
-    <link rel="stylesheet" href="{{url_for('static', path='/css/query_phone.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', path='/css/query_ip.css')}}">
 </head>
 <body>
     <h1>查询结果</h1>
@@ -11,18 +11,28 @@
     {% else %}
         <table>
             <tr>
-                <th>手机号码</th>
-                <th>归属地</th>
-                <th>归属地邮政编码</th>
-                <th>归属地地区编号</th>
-                <th>手机所属运行商(携号转网只显示最初运行商)</th>
+                <th>IP地址</th>
+                <th>经纬度</th>
+                <th>地址</th>
+                <th>国家</th>
+                <th>国家代码</th>
+                <th>国家简称</th>
+                <th>省份</th>
+                <th>城市</th>
+                <th>城市等级</th>
+                <th>城市代码</th>
             </tr>
             <tr>
-                <td>{{ phone_msg.phone }}</td>
-                <td>{{ phone_msg.province }} {{ phone_msg.city }}</td>
-                <td>{{ phone_msg.zip_code }}</td>
-                <td>{{ phone_msg.area_code }}</td>
-                <td>{{ phone_msg.phone_type }}</td>
+                <th> {{ ip_num}} </th>
+                <td>{{ ip_msg.location.lng }} ,{{ ip_msg.location.lat }}</td>
+                <td>{{ ip_msg.formatted_address }}</td>
+                <td>{{ ip_msg.addressComponent.country }}</td>
+                <td>{{ ip_msg.addressComponent.country_code }}</td>
+                <td>{{ ip_msg.addressComponent.country_code_iso }}</td>
+                <td>{{ ip_msg.addressComponent.province }}</td>
+                <td>{{ ip_msg.addressComponent.city }}</td>
+                <td>{{ ip_msg.addressComponent.city_level }}</td>
+                <td>{{ ip_msg.cityCode }}</td>
             </tr>
         </table>
     {% endif %}

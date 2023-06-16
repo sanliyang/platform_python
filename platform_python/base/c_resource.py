@@ -62,3 +62,6 @@ class CResource:
     # config path
     CONFIG_NAME = "workflow_platform.ini"
 
+    # third_part
+    THIRD_PART = "third_part"
+

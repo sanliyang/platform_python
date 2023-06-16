@@ -1,0 +1,122 @@
+#sidebar {
+    width: 250px;
+    background-color: #f1ffff;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.back-to-home {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: #f1f1f1;
+    text-decoration: none;
+}
+
+.back-to-home:hover {
+    background-color: #ddd;
+}
+
+#sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-item {
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.sidebar-item1 {
+    border-bottom: 1px solid #ccc; /* 添加菜单项的边框分割线 */
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.sidebar-link {
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc; /* 添加菜单项的边框分割线 */
+
+}
+
+.sidebar-link:hover {
+    background-color: #ccc;
+    margin-left: 15px;
+}
+
+.sidebar-item1:hover {
+    background-color: #ccc;
+    margin-left: 20px;
+}
+
+.submenu {
+    display: none;
+}
+
+.sidebar-divider {
+    margin: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+
+#canvas {
+    margin-left: 220px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    min-height: 100vh;
+    position: relative;
+}
+
+.algorithm-block-bak {
+    width: 200px;
+    height: 150px;
+    background-color: #ddd;
+    border: 1px solid #aaa;
+    text-align: center;
+    line-height: 50px;
+    cursor: move;
+    margin-bottom: 10px;
+    position: absolute;
+}
+
+.icon-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 40px;
+    width: 40px;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+}
+
+.icon-left {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    height: 40px;
+    width: 40px;
+    pointer-events: none;
+}
+
+.icon-right {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    height: 40px;
+    width: 40px;
+    pointer-events: none;
+}

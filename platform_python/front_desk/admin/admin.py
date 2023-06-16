@@ -35,12 +35,12 @@ async def group(request: Request):
     return templates.TemplateResponse("admin_group.html", {"request": request, "username": username})
 
 
-@router.get("/login", name="admin_get_login")
+@router.get("/", name="admin_get_login")
 async def login(request: Request):
     return templates.TemplateResponse("admin_login.html", {"request": request})
 
 
-@router.post("/login", name="admin_post_login")
+@router.post("/", name="admin_post_login")
 async def login(request: Request, username: str = Form(), password: str = Form()):
     print(username, password)
     # 这里编写检查用户和密码的逻辑， 检查通过就可以重定向到admin的首页， 检查不通过重定向到 login界面
@@ -49,7 +49,7 @@ async def login(request: Request, username: str = Form(), password: str = Form()
         url = router.url_path_for("admin_index")
         request.session["username"] = username
         return RedirectResponse(url=url, status_code=status.HTTP_303_SEE_OTHER)
-    url = router.url_path_for("login")
+    url = router.url_path_for("admin_get_login")
     return RedirectResponse(url=url, status_code=status.HTTP_303_SEE_OTHER)
 
 

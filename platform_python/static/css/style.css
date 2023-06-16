@@ -32,7 +32,7 @@ nav {
 /* Hero 区域样式 */
 
 .hero {
-    background-image: url('hero-background.jpg');
+    background-image: url('/static/image/background.png');
     background-size: cover;
     background-position: center;
     height: 500px;

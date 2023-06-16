@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>手机号归属地查询</title>
-    <link rel="stylesheet" href="{{url_for('static', path='/css/query_phone.css')}}">
+    <title>IP地址查询</title>
+    <link rel="stylesheet" href="{{url_for('static', path='/css/query_ip.css')}}">
 </head>
 <body>
-    <h1>手机号归属地查询</h1>
-    <form action="/phones/query" method="post">
-        <div class="phone_div">
-            <label for="phone_number">请输入手机号码：</label>
-            <input type="text" id="phone_number" name="phone_number" required>
+    <h1>IP地址查询</h1>
+    <form action="/ip/query" method="post">
+        <div class="ip_div">
+            <label for="ip_number">请输入ip地址：</label>
+            <input type="text" id="ip_number" name="ip_number" required>
             <button type="submit">查询</button>
         </div>
     </form>

@@ -26,3 +26,11 @@ class CProject:
     @classmethod
     def get_template(cls):
         return Jinja2Templates(directory="../template")
+
+    @classmethod
+    def get_third_part(cls):
+        return CFile.path_join(cls.project_path(), CResource.THIRD_PART)
+
+    @classmethod
+    def get_ip_dataset(cls):
+        return CFile.path_join(cls.get_third_part(), "IP2LOCATION-LITE-DB5.BIN")

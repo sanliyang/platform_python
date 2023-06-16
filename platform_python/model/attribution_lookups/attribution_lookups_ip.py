@@ -11,6 +11,7 @@ import IP2Location
 import requests
 
 from base.c_json import CJson
+from base.c_project import CProject
 
 
 class AttributionLookupsIp:
@@ -18,7 +19,7 @@ class AttributionLookupsIp:
     def __init__(self, ip_address):
         # https://www.ip2location.com/development-libraries/ip2location/python
         # database = IP2Location.IP2Location(os.path.join("data", "IPV6-COUNTRY.BIN"), "SHARED_MEMORY")
-        self.database = IP2Location.IP2Location("../../third_part/IP2LOCATION-LITE-DB5.BIN")
+        self.database = IP2Location.IP2Location(CProject.get_ip_dataset())
         self.rec = self.database.get_all(ip_address)
         self.detail_msg = None
         self.cj = CJson()
@@ -103,7 +104,7 @@ class AttributionLookupsIp:
 
 
 if __name__ == '__main__':
-    gip = AttributionLookupsIp("xx.xx.xx.xx")
+    gip = AttributionLookupsIp("172.71.154.79")
     print(gip.get_city_piny())
     print(gip.get_region_piny())
     print(gip.get_country_short_en())
@@ -111,7 +112,7 @@ if __name__ == '__main__':
     print(gip.get_longitude())
     print(gip.get_latitude())
     detail_msg = gip.get_detail_json_msg(
-        "xxxxxxxxxxxx",
+        "KuuyE4zrAqlhktHtiwh5OG2HcPGEvinj",
         gip.get_longitude(),
         gip.get_latitude()
     )

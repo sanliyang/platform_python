@@ -7,11 +7,8 @@
 @create->time 2023/5/22-16:40
 @desc->
 ++++++++++++++++++++++++++++++++++++++ """
-
 from fastapi import APIRouter
-from starlette import status
-from starlette.requests import Request
-from starlette.responses import JSONResponse, RedirectResponse
+from starlette.responses import RedirectResponse
 
 from base.c_logger import CLogger
 from base.c_mysql import CMysql
@@ -27,7 +24,7 @@ cm = CMysql()
 
 
 @router.get("/delete/{username}", name="delete_user")
-async def delete(request: Request, username: str):
+async def delete(username: str):
     try:
         cm.execute(
             '''

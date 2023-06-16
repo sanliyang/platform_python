@@ -201,5 +201,10 @@ if __name__ == '__main__':
     # for result in results:
     #     print(result)
 
-    print(CFile.mk_dir("{sas/sas}"))
+    # print(CFile.mk_dir("{sas/sas}"))
 
+    file_name_list = CFile.find_file_from_path(r"D:\tsdb_develop\bin\template\da2_tools", "gxl_2019*.json", False)
+    file_list = []
+    for file_name_with_path in file_name_list:
+        file_name = CFile.get_name_with_suffix(file_name_with_path)
+        print("\"" + file_name + "\",")
